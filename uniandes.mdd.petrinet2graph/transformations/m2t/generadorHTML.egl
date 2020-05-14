@@ -24,7 +24,7 @@ window.onload = function() {
 
 
 
-//TO-DO imprimir nodos huerfanos
+//DONE imprimir nodos huerfanos
 for ( n in Node.allInstances() ) 
 {
 	var isSource = true;

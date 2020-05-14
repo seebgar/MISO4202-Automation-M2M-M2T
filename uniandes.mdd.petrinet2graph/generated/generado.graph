@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"/>
+<Graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Graph="Graph">
+  <nodes name="t1">
+    <outgoing target="//@nodes.1"/>
+  </nodes>
+  <nodes name="p1" incoming="//@nodes.0/@outgoing.0"/>
+  <nodes name="p1">
+    <outgoing target="//@nodes.3"/>
+  </nodes>
+  <nodes name="t2" incoming="//@nodes.2/@outgoing.0"/>
+  <nodes name="t2">
+    <outgoing target="//@nodes.5"/>
+  </nodes>
+  <nodes name="p2" incoming="//@nodes.4/@outgoing.0"/>
+  <nodes name="p2">
+    <outgoing target="//@nodes.7"/>
+  </nodes>
+  <nodes name="t3" incoming="//@nodes.6/@outgoing.0"/>
+  <nodes name="t4"/>
+</Graph:Graph>

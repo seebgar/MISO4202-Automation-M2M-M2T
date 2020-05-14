@@ -51,4 +51,25 @@ rule Petrinet2Graph
 			edgeGrafo.source = nodoOrigenGrafo;
 			edgeGrafo.target = nodoDestinoGrafo;
 		}
+		
+			
+		// huerfanos
+		for (node in Petrinet!Node.allInstances)
+		{
+			if ( g.nodes.select(n | n.name = node.name)->first() = null )
+			{
+				var n = new Graph!Node;
+				n.name = node.name;
+				g.nodes.add(n);
+			}
+		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
