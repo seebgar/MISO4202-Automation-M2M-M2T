@@ -1,0 +1,81 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!-- AUTOMATIZACION DE LA CADENA DE TRANSFORMACION M2M -> M2T -->
+
+<!-- RUN AS -> EXTERNAL TOOLS CONFIGURATION ... -> ANT BUILD -> JRE -> RUN IN THE SAME JRE -->
+
+<!-- TARGET DE ENTRADA -> LE INDICA A ANT LO QUE SE EJECUTARA PRIMERO -->
+<project default="build">
+
+
+<!-- VARIABLES -> SE DECLARAN LAS TRANSFORMACION, MODELOS, METAMODELOS -- basedir ES LA RUTA DE ENTRADA AL PROYECTO-->
+<property name="generated.location" location="${basedir}/generated"/>
+<property name="transformations.location" location="${basedir}/transformations"/>
+<property name="models.location" location="${basedir}/models"/>
+<property name="metamodels.location" location="${basedir}/metamodels"/>
+<property name="graph.metamodel.location" location="${metamodels.location}/graph.ecore" />
+
+<property name="graph.metamodel.uri" value="Graph" />
+<property name="petrinet.metamodel.uri" value="http://www.example.org/petrinet2" />
+
+
+<!-- PROCESOS A EJECUTAR POR PARTE DE ANT -->
+
+
+<target name="build">
+  <echo>0. Borrando el contenido de la carpeta generated</echo>
+  
+  <!-- BORRA TODO LO QUE EXITIERA EN GENERATED PARA TENER LA CARPETA LIMPIA -->
+  <delete dir="${generated.location}" failonerror="true" />
+  
+  <!-- LLAMADO AL SIGUIENTE PROCESO -->
+  <antcall target="m2m" />
+</target>
+
+
+
+<target name="m2m">
+  <echo>Realizar transformación ETL (M2M)</echo>
+  
+  <!-- REGISTER EPACKAGES -->
+  <epsilon.emf.register file="${graph.metamodel.location}"/>
+  
+  <!-- CARGAR EL MODELO -->
+  <epsilon.emf.loadModel name="Graph" modelfile="${generated.location}/generado.graph" metamodeluri="${graph.metamodel.uri}" read="false" store="true" />
+  <epsilon.emf.loadModel name="Petrinet" modelfile="${models.location}/entrada.petrinet2" metamodeluri="${petrinet.metamodel.uri}" read="true" store="false" />
+  
+  <!-- TRANSFORMACION ETL INIDICANDO EL ARCHIVO ETL A EJECUTAR Y LOS MODELOS QUE USUARAN --> 
+  <epsilon.etl src="${transformations.location}/m2m/Petrinet2Graph.etl">
+  		<model ref="Graph" />
+		<model ref="Petrinet" />
+  </epsilon.etl>
+  
+  <!-- SE CIERRAN LOS ARCHIVOS, PUES SE ESTABA LEYENDO Y ESCRIBIENDO SOBRE ESTOS -->
+  <epsilon.disposeModels/>
+  
+  <!-- LLAMADO AL SIGUIENTE PROCESO -->
+  <antcall target="m2t" />
+</target>
+
+
+
+
+<target name="m2t">
+  	<echo>Corriendo Template EGL (M2T)</echo>
+
+	<epsilon.emf.register file="${graph.metamodel.location}"/>
+
+  	<epsilon.emf.loadModel name="Graph" modelfile="${generated.location}/generado.graph" metamodeluri="${graph.metamodel.uri}" read="true" store="true" />
+
+	<epsilon.egl src="${transformations.location}/m2t/master.egl">
+  		<model ref="Graph" />
+  	</epsilon.egl>
+
+  <epsilon.disposeModels/>
+</target>
+
+
+
+</project>

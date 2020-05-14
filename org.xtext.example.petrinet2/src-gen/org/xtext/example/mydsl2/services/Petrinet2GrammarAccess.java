@@ -346,7 +346,7 @@ public class Petrinet2GrammarAccess extends AbstractGrammarElementFinder {
 		
 		//OutputArc Arc:
 		//	LESS TOUTPUTARC ID EQUALS name=STRING 'target' EQUALS To=[Node|STRING] 'source' EQUALS From=[Node|STRING] GREATER
-		//	LESS SLASH TOUTPUTARC GREATER;
+		//	LESS SLASH TOUTPUTARC GREATER
 		@Override public ParserRule getRule() { return rule; }
 
 		//LESS TOUTPUTARC ID EQUALS name=STRING 'target' EQUALS To=[Node|STRING] 'source' EQUALS From=[Node|STRING] GREATER LESS
@@ -444,7 +444,7 @@ public class Petrinet2GrammarAccess extends AbstractGrammarElementFinder {
 		
 		//InputArc Arc:
 		//	LESS TINPUTARC ID EQUALS name=STRING 'target' EQUALS To=[Node|STRING] 'source' EQUALS From=[Node|STRING] GREATER
-		//	LESS SLASH TINPUTARC GREATER;
+		//	LESS SLASH TINPUTARC GREATER
 		@Override public ParserRule getRule() { return rule; }
 
 		//LESS TINPUTARC ID EQUALS name=STRING 'target' EQUALS To=[Node|STRING] 'source' EQUALS From=[Node|STRING] GREATER LESS
@@ -652,7 +652,7 @@ public class Petrinet2GrammarAccess extends AbstractGrammarElementFinder {
 
 	//OutputArc Arc:
 	//	LESS TOUTPUTARC ID EQUALS name=STRING 'target' EQUALS To=[Node|STRING] 'source' EQUALS From=[Node|STRING] GREATER
-	//	LESS SLASH TOUTPUTARC GREATER;
+	//	LESS SLASH TOUTPUTARC GREATER
 	public OutputArcElements getOutputArcAccess() {
 		return pOutputArc;
 	}
@@ -663,7 +663,7 @@ public class Petrinet2GrammarAccess extends AbstractGrammarElementFinder {
 
 	//InputArc Arc:
 	//	LESS TINPUTARC ID EQUALS name=STRING 'target' EQUALS To=[Node|STRING] 'source' EQUALS From=[Node|STRING] GREATER
-	//	LESS SLASH TINPUTARC GREATER;
+	//	LESS SLASH TINPUTARC GREATER
 	public InputArcElements getInputArcAccess() {
 		return pInputArc;
 	}
@@ -745,14 +745,13 @@ public class Petrinet2GrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' | "'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	'/*'->'*/';
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 

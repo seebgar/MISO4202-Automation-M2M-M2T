@@ -1,3 +1,22 @@
+
+pre {
+	"*--> 1. Inicia Transformacion M2M".println();
+}
+
+
+post {
+	"Termina Transformacion M2M".println();
+}
+
+// 1. Transformacion M2M
+
+// RUN AS -> CONFIG -> NEW ETL TRANSFORMATION -> AGREGANDO LOS EMF MODELS :
+// Petrinet que utiliza entrada.petrinet2
+// Graph que define el archivo de salida: generado.xmi
+// este ultimo archivo deberia ser egenerado como instacnia dinamica del
+// del modelo para la Entidad entrada del metamodelo Graph.ecore
+
+
 rule Petrinet2Graph 
 	transform p : Petrinet!Petrinet
 	to g : Graph!Graph {

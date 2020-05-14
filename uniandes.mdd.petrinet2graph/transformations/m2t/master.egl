@@ -1,4 +1,15 @@
-[% 
+[%
+
+	// 2. TRANSFORMACION M2T
+	
+	// RUN AS -> CONFIG -> NEW EGL GENERATOR
+	// SE UTILIZA COMO EMF MODEL, EL GRAFO GENERADO EN EL PASO 1 (TRANSFORMACION M2M PETRI -> GRAFO)
+	// ese modelo debe estar registrado con su respectivo metamodelo
+
+	"*--> 2. Inicia Transformacion M2T".println();
+	 
 	var t:Template:= TemplateFactory.load('generadorHTML.egl');
 	t.generate('../../generated/index.html');
+	
+	"Termina Transformacion M2T".println();
 %]

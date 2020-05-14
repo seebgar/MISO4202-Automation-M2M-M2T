@@ -18,9 +18,9 @@ window.onload = function() {
 	g.addEdge("p1", "t2");
 	g.addEdge("t2", "p2");
 	g.addEdge("p2", "t3");
+//TO-DO imprimir nodos huerfanos
 
-	g.addNode("t4");
-	 
+//END
 	var layouter = new Graph.Layout.Spring(g);
 	layouter.layout();
 	 
