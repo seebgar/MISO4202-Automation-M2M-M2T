@@ -21,8 +21,39 @@ window.onload = function() {
 	g.addEdge("[%=e.source.name %]", "[%=e.target.name %]");
 	[%
 }	
-%]
+
+
+
 //TO-DO imprimir nodos huerfanos
+for ( n in Node.allInstances() ) 
+{
+	var isSource = true;
+	var isDestination = true;
+	
+	if ( Edge.allInstances().select( e | e.source.name = n.name )->first() = null )
+	{
+		isSource = false;
+	}
+	
+	if ( Edge.allInstances().select( e | e.target.name = n.name )->first() = null )
+	{
+		isDestination = false;
+	}
+	
+	if ( not isSource and not isDestination  )
+	{
+		%]
+		g.addNode("[%=n.name %]");
+		[%
+	}
+	
+	
+}
+	
+	
+	
+%]
+
 
 //END
 	var layouter = new Graph.Layout.Spring(g);

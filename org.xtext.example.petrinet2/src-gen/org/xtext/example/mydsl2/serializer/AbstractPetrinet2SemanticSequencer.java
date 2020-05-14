@@ -81,8 +81,8 @@ public abstract class AbstractPetrinet2SemanticSequencer extends AbstractDelegat
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getInputArcAccess().getNameSTRINGTerminalRuleCall_4_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getInputArcAccess().getToNodeSTRINGTerminalRuleCall_7_0_1(), semanticObject.getTo());
-		feeder.accept(grammarAccess.getInputArcAccess().getFromNodeSTRINGTerminalRuleCall_10_0_1(), semanticObject.getFrom());
+		feeder.accept(grammarAccess.getInputArcAccess().getToNodeSTRINGTerminalRuleCall_7_0_1(), semanticObject.eGet(Petrinet2Package.Literals.ARC__TO, false));
+		feeder.accept(grammarAccess.getInputArcAccess().getFromNodeSTRINGTerminalRuleCall_10_0_1(), semanticObject.eGet(Petrinet2Package.Literals.ARC__FROM, false));
 		feeder.finish();
 	}
 	
@@ -117,8 +117,8 @@ public abstract class AbstractPetrinet2SemanticSequencer extends AbstractDelegat
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOutputArcAccess().getNameSTRINGTerminalRuleCall_4_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getOutputArcAccess().getToNodeSTRINGTerminalRuleCall_7_0_1(), semanticObject.getTo());
-		feeder.accept(grammarAccess.getOutputArcAccess().getFromNodeSTRINGTerminalRuleCall_10_0_1(), semanticObject.getFrom());
+		feeder.accept(grammarAccess.getOutputArcAccess().getToNodeSTRINGTerminalRuleCall_7_0_1(), semanticObject.eGet(Petrinet2Package.Literals.ARC__TO, false));
+		feeder.accept(grammarAccess.getOutputArcAccess().getFromNodeSTRINGTerminalRuleCall_10_0_1(), semanticObject.eGet(Petrinet2Package.Literals.ARC__FROM, false));
 		feeder.finish();
 	}
 	
